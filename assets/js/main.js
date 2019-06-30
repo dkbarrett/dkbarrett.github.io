@@ -4,6 +4,27 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+var emailIcon = document.getElementById("email-icon");
+
+// Sorry about this, this is creates and opens a mailto link of my email address
+function iHateSpam() {
+	var link = window.atob('bW9jLmxpYW10b2hAdHRlcnJhYi5rZDpvdGxpYW0=');
+	emailIcon.href = link.split("").reverse().join("");
+}
+
+// Ensures backward compatibility with IE old versions
+function addEmailHover() {
+	if (document.addEventListener && emailIcon !== null) {
+		emailIcon.addEventListener('mouseover', iHateSpam);
+	} else if (document.attachEvent && emailIcon !== null) {
+		emailIcon.attachEvent('onmouseover', iHateSpam);
+	} else {
+		return;
+	}
+}
+
+addEmailHover();
+
 (function($) {
 
 	var	$window = $(window),
